@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Дневник смен водителя</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Дневник смен</h1>
+      <nav class="day-nav">
+        <button id="prev" aria-label="Предыдущий день">‹</button>
+        <input type="date" id="day">
+        <button id="next" aria-label="Следующий день">›</button>
+      </nav>
+    </header>
+
+    <section class="cards" id="summary">
+      <div class="card"><span>Поездок</span><b id="s-count">—</b></div>
+      <div class="card"><span>Выручка</span><b id="s-revenue">—</b></div>
+      <div class="card"><span>Комиссия</span><b id="s-commission">—</b></div>
+      <div class="card accent"><span>На руки</span><b id="s-net">—</b></div>
+      <div class="card"><span>Наличные</span><b id="s-cash">—</b><small id="s-cash-n"></small></div>
+      <div class="card"><span>Карта</span><b id="s-card">—</b><small id="s-card-n"></small></div>
+    </section>
+
+    <section>
+      <h2>Поездки</h2>
+      <table>
+        <thead><tr><th>Время</th><th>Длит.</th><th>Оплата</th><th class="num">Сумма</th><th class="num">Комиссия</th></tr></thead>
+        <tbody id="trips"></tbody>
+      </table>
+      <p id="empty" class="muted" hidden>В этот день поездок нет.</p>
+    </section>
+
+    <section>
+      <h2>Добавить поездку</h2>
+      <form id="add">
+        <label>Начало <input type="time" name="start" required></label>
+        <label>Окончание <input type="time" name="end" required></label>
+        <label>Сумма, ₸ <input type="number" name="amount" min="1" step="1" required></label>
+        <label>Комиссия, ₸ <input type="number" name="commission" min="0" step="1" value="0" required></label>
+        <label>Оплата
+          <select name="payment"><option value="cash">Наличные</option><option value="card">Карта</option></select>
+        </label>
+        <button type="submit">Добавить</button>
+      </form>
+      <p id="msg" role="status"></p>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
